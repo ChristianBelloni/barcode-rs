@@ -4,6 +4,7 @@ use crate::EncodingError;
 
 use super::DynamicBarcodeEncoding;
 
+/// Code 11 format, for more [`info`](https://web.archive.org/web/20070202060711/http://www.barcodeisland.com/code11.phtml)
 pub struct Code11;
 
 impl DynamicBarcodeEncoding for Code11 {

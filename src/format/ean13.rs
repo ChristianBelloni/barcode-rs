@@ -6,6 +6,7 @@ use crate::EncodingError;
 
 use super::{calc_checksum, Parity, ParityTable, StaticBarcodeEncoding};
 
+/// EAN13 format, for more [`info`](https://web.archive.org/web/20070202111554/http://www.barcodeisland.com/ean13.phtml)
 pub struct EAN13;
 
 impl StaticBarcodeEncoding<12> for EAN13 {

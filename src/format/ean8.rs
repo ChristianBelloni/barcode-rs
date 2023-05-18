@@ -7,6 +7,7 @@ use crate::{
 
 use super::{calc_checksum, StaticBarcodeEncoding};
 
+/// EAN8 format, for more [`info`](https://web.archive.org/web/20070202060730/http://www.barcodeisland.com/ean8.phtml)
 pub struct EAN8;
 
 impl StaticBarcodeEncoding<7> for EAN8 {

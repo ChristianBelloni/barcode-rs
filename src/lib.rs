@@ -1,3 +1,4 @@
+#![deny(missing_docs)]
 //! # Description
 //!
 //! Barcode-rs is an utility crate for encoding data into several supported formats
@@ -34,15 +35,22 @@ use format::{
 };
 
 mod encoding_source;
+
+/// Format implementations
 pub mod format;
 
 /// Supported Barcode Formats
 #[non_exhaustive]
 pub enum BarcodeFormat {
+    /// Code 11 format
     Code11,
+    /// EAN13 format
     EAN13,
+    /// EAN8 format
     EAN8,
+    /// Interleaved 2 of 5 format
     Interleaved2Of5,
+    /// Standard 2 of 5 format
     Standard2Of5,
 }
 

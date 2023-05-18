@@ -14,11 +14,13 @@ use bit_vec::BitVec;
 
 /// Encoding trait for fixed sized encodings
 pub trait StaticBarcodeEncoding<const T: usize>: private::Sealed {
+    /// Encode the provided char array
     fn encode(chars: &[char; T]) -> Result<BitVec, EncodingError>;
 }
 
 /// Encoding trait for dynamic sized encodings
 pub trait DynamicBarcodeEncoding: private::Sealed {
+    /// Encode the provided char array
     fn encode(chars: &[char]) -> Result<BitVec, EncodingError>;
 }
 

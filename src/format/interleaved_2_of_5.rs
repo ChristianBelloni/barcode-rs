@@ -4,6 +4,7 @@ use crate::{format::dyn_calc_checksum, EncodingError};
 
 use super::{DynamicBarcodeEncoding, Width, WIDTH_MAP};
 
+/// Interleaved 2 of 5 format, for more [`info`](https://web.archive.org/web/20070202214904/http://barcodeisland.com/int2of5.phtml)
 pub struct Interleaved2Of5;
 
 impl DynamicBarcodeEncoding for Interleaved2Of5 {

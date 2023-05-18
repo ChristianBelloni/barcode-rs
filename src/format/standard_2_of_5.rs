@@ -4,6 +4,7 @@ use crate::{format::WIDTH_MAP, EncodingError};
 
 use super::DynamicBarcodeEncoding;
 
+/// Standard 2 of 5 format, for more [`info`](https://web.archive.org/web/20070202214456/http://barcodeisland.com/2of5.phtml)
 pub struct Standard2Of5;
 
 impl DynamicBarcodeEncoding for Standard2Of5 {
