@@ -26,7 +26,3 @@ let result: bit_vec::BitVec = barcode_rs::encode(&my_data, BarcodeFormat::EAN13)
 
 ```
 
-
-Current version: 0.1.0
-
-License: MIT OR Apache-2.0
