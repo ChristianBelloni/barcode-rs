@@ -1,3 +1,30 @@
+//! # Description
+//!
+//! Barcode-rs is an utility crate for encoding data into several supported formats
+//!
+//! Currently supported formats:
+//! - Code11,
+//! - EAN13,
+//! - EAN8,
+//! - Interleaved 2 of 5,
+//! - Standard 2 of 5,
+//!
+//! # Usage
+//!
+//! ```rust
+//! let my_data = "7501031311309";
+//! let result: bit_vec::BitVec = my_data.barcode_encode(BarcodeFormat::EAN13).unwrap();
+//!
+//! # assert_eq!(result, "10101100010100111001100101001110111101011001101010100001011001101100110100001011100101110100101".to_string());
+//! ```
+//! ```rust
+//! let my_data = "7501031311309".chars().collect::<Vec<char>>();
+//! let result: bit_vec::BitVec = barcode_rs::encode(&my_data, BarcodeFormat::EAN13).unwrap();
+//!
+//! # assert_eq!(result, "10101100010100111001100101001110111101011001101010100001011001101100110100001011100101110100101".to_string());
+//! ```
+//!
+
 use std::{array::TryFromSliceError, char::TryFromCharError};
 
 use bit_vec::BitVec;
@@ -9,6 +36,8 @@ use format::{
 mod encoding_source;
 pub mod format;
 
+/// Supported Barcode Formats
+#[non_exhaustive]
 pub enum BarcodeFormat {
     Code11,
     EAN13,
@@ -17,10 +46,14 @@ pub enum BarcodeFormat {
     Standard2Of5,
 }
 
+/// Encoding Error
 #[derive(Debug)]
 pub enum EncodingError {
+    /// The selected encoding requires a fixed size
     WrongSize,
+    /// The input data contains an invalid char
     WrongChar,
+    /// The input data contains a checksum but its invalid
     WrongCheckusm,
 }
 
@@ -35,7 +68,7 @@ impl From<TryFromCharError> for EncodingError {
         Self::WrongChar
     }
 }
-
+/// Main encoding function, see [`BarcodeFormat`] for available formats
 pub fn encode(data: &[char], format: BarcodeFormat) -> Result<BitVec, EncodingError> {
     match format {
         BarcodeFormat::Code11 => Code11::encode(data),

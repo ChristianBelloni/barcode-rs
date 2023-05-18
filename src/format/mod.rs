@@ -12,10 +12,12 @@ pub(crate) use ean_char_set::*;
 use crate::EncodingError;
 use bit_vec::BitVec;
 
+/// Encoding trait for fixed sized encodings
 pub trait StaticBarcodeEncoding<const T: usize>: private::Sealed {
     fn encode(chars: &[char; T]) -> Result<BitVec, EncodingError>;
 }
 
+/// Encoding trait for dynamic sized encodings
 pub trait DynamicBarcodeEncoding: private::Sealed {
     fn encode(chars: &[char]) -> Result<BitVec, EncodingError>;
 }
